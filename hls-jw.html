@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLS</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #player {
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100% !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <script src="https://cdn.jwplayer.com/libraries/0P4vdmeO.js" crossorigin="anonymous"></script>
+    <script src="https://dogoterra.github.io/video/extra/subtitles-octopus.js"></script>
+    <script>
+        var player = jwplayer("player").setup({
+            "playlist": [{"sources":[{"type":"hls","file":atob("aHR0cHM6Ly9hc3NldHMuZG9zby5lcy9ib2t1X25vX2hlcm9fYWNhZGVtaWFfc2Vhc29uMl9vcGVuaW5nMi5tM3U4")}]}],
+            "height": "100%",
+            "width": "100%",
+            "primary": "html5",
+            "hlshtml": true
+        });
+        player.on('ready', function () {
+            var video = player.getContainer().querySelector('video');
+            window.SubtitlesOctopusOnLoad = function() {
+                var options = {
+                    video: video,
+                    subUrl: 'https://dogoterra.github.io/video/subtitles/ass/opening2.br',
+                    fonts: ['https://dogoterra.github.io/video/subtitles/fonts/Rosario-Bold.woff2'],
+                    workerUrl: 'https://dogoterra.github.io/video/extra/subtitles-octopus-worker.js'
+                };
+                window.octopusInstance = new SubtitlesOctopus(options);
+            };
+            if (SubtitlesOctopus) {
+                SubtitlesOctopusOnLoad();
+            }
+        });
+    </script>
+</body>
+</html>
