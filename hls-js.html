@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.8.4/dist/video-js.min.css" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #hlscontainer {
+            height: 810px;
+            width: 1440px;
+        }
+    </style>
+</head>
+<body>
+    <div id="hlscontainer">
+        <video id="player" class="video-js" playsinline controls data-setup="{}">
+            <source src="https://assets.doso.es/boku_no_hero_academia_season2_opening2.m3u8" type="application/x-mpegURL">
+        </video>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.8.4/dist/video.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@videojs/http-streaming@1.13.3/dist/videojs-http-streaming.min.js" crossorigin="anonymous"></script>
+    <script src="https://dogoterra.github.io/video/extra/subtitles-octopus.js"></script>
+    <script>
+        const player = videojs('#player');
+        player.ready(function() {
+            var video = this.tech_.el_;
+            window.SubtitlesOctopusOnLoad = function() {
+                var options = {
+                    video: video,
+                    subUrl: 'https://dogoterra.github.io/video/subtitles/ass/opening2.br',
+                    fonts: ['https://dogoterra.github.io/video/subtitles/fonts/Rosario-Bold.woff2'],
+                    workerUrl: 'https://dogoterra.github.io/video/extra/subtitles-octopus-worker.js'
+                };
+                window.octopusInstance = new SubtitlesOctopus(options);
+            };
+            if (SubtitlesOctopus) {
+                SubtitlesOctopusOnLoad();
+            }
+        });
+    </script>
+</body>
+</html>
