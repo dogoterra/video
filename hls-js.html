@@ -10,18 +10,19 @@
             margin: 0;
             overflow: hidden;
         }
-        #hlscontainer {
-            height: 810px;
-            width: 1440px;
+        #player {
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100% !important;
+            width: 100% !important;
         }
     </style>
 </head>
 <body>
-    <div id="hlscontainer">
-        <video id="player" class="video-js" playsinline controls data-setup="{}">
-            <source src="https://assets.doso.es/boku_no_hero_academia_season2_opening2.m3u8" type="application/x-mpegURL">
-        </video>
-    </div>
+    <video id="player" class="video-js" playsinline controls data-setup="{}">
+        <source src="https://assets.doso.es/boku_no_hero_academia_season2_opening2.m3u8" type="application/x-mpegURL">
+    </video>
     <script src="https://cdn.jsdelivr.net/npm/video.js@7.8.4/dist/video.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@videojs/http-streaming@1.13.3/dist/videojs-http-streaming.min.js" crossorigin="anonymous"></script>
     <script src="https://dogoterra.github.io/video/extra/subtitles-octopus.js"></script>
