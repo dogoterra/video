@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #hlscontainer {
+            height: 720px;
+            width: 1280px;
+        }
+    </style>
+</head>
+<body>
+    <div id="hlscontainer">
+        <video id="player" playsinline controls data-plyr-config='{"speed":{"selected":1,"options":[0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]}}'></video>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>
+    <script src="/extra/subtitles-octopus.js"></script>
+    <script>
+        const player = new Plyr('#player');
+        player.on('ready', function() {
+            var video = document.querySelector('#player');
+
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(atob("aHR0cHM6Ly9hc3NldHMuZG9zby5lcy9ib2t1X25vX2hlcm9fYWNhZGVtaWFfc2Vhc29uMl9vcGVuaW5nMi5tM3U4"));
+                hls.attachMedia(video);
+            }
+
+            window.SubtitlesOctopusOnLoad = function() {
+                var options = {
+                    video: video,
+                    subUrl: 'https://assets.doso.es/ass/boku_no_hero_academia_season2/opening2.br',
+                    fonts: ['https://assets.doso.es/ass/fonts/Typomoderno-Bold.ttf'],
+                    workerUrl: '/extra/subtitles-octopus-worker.js'
+                };
+                window.octopusInstance = new SubtitlesOctopus(options);
+            };
+            if (SubtitlesOctopus) {
+                SubtitlesOctopusOnLoad();
+            }
+
+        });
+    </script>
+</body>
+</html>
