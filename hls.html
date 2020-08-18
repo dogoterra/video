@@ -22,7 +22,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>
-    <script src="/extra/subtitles-octopus.js"></script>
+    <script src="https://dogoterra.github.io/video/extra/subtitles-octopus.js"></script>
     <script>
         const player = new Plyr('#player');
         player.on('ready', function() {
@@ -37,9 +37,9 @@
             window.SubtitlesOctopusOnLoad = function() {
                 var options = {
                     video: video,
-                    subUrl: '/subtitles/ass/opening2.br',
-                    fonts: ['/subtitles/fonts/Typomoderno-Bold.ttf'],
-                    workerUrl: '/extra/subtitles-octopus-worker.js'
+                    subUrl: 'https://dogoterra.github.io/video/subtitles/ass/opening2.br',
+                    fonts: ['https://dogoterra.github.io/video/subtitles/fonts/Typomoderno-Bold.ttf'],
+                    workerUrl: 'https://dogoterra.github.io/video/extra/subtitles-octopus-worker.js'
                 };
                 window.octopusInstance = new SubtitlesOctopus(options);
             };
