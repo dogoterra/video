@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebTorrent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100% !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <video id="player" playsinline controls data-plyr-config='{"speed":{"selected":1,"options":[1]}}' preload="auto"></video>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js" crossorigin="anonymous"></script>
+    <script>
+        const player = new Plyr('#player');
+        player.on('ready', function(){
+            var video = document.querySelector('#player');
+            var client = new WebTorrent();
+            var key = atob('bWFnbmV0Oj94dD11cm46YnRpaDowNzQ3OTAzODRmYmU1NmM3ODU1OTdjNzYxMDdhNTRmNmE1NWM5N2I3JmRuPW5pZ2h0bWFyZS5tcDQmdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5vcGVud2VidG9ycmVudC5jb20mdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5idG9ycmVudC54eXomdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5mYXN0Y2FzdC5ueg==');
+            var load = client.add(key, function(){
+                load.files.find(function(file){
+                    file.renderTo(video);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
