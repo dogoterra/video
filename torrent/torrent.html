@@ -30,7 +30,7 @@
         player.on('ready', function(){
             var video = document.querySelector('#player');
             var client = new WebTorrent();
-            var key = atob('bWFnbmV0Oj94dD11cm46YnRpaDowNzQ3OTAzODRmYmU1NmM3ODU1OTdjNzYxMDdhNTRmNmE1NWM5N2I3JmRuPW5pZ2h0bWFyZS5tcDQmdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5vcGVud2VidG9ycmVudC5jb20mdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5idG9ycmVudC54eXomdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5mYXN0Y2FzdC5ueg==');
+            var key = atob('bWFnbmV0Oj94dD11cm46YnRpaDpkZWUzYjNlZjQwMThhYjVmMzU0NmQ4NGE5MTY1NjVjNThiY2NjNGU5JmRuPW5pZ2h0bWFyZS5tcDQmdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5idG9ycmVudC54eXomdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5vcGVud2VidG9ycmVudC5jb20=');
             var load = client.add(key, function(){
                 load.files.find(function(file){
                     file.renderTo(video);
