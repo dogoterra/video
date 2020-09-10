@@ -24,7 +24,7 @@
         <video id="player" playsinline controls data-plyr-config='{"speed":{"selected":1,"options":[1]}}' preload="auto"></video>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js" crossorigin="anonymous"></script>
     <script>
         const player = new Plyr('#player');
         player.on('ready', function(){
@@ -34,7 +34,7 @@
             var load = client.add(key, function(){
                 load.files.find(function(file){
                     file.renderTo(video);
-                })
+                });
             });
         });
     </script>
