@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -25,12 +26,13 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.doso.es/scripts/extraplay.js" crossorigin="anonymous"></script>
     <script>
         const player = new Plyr('#player');
         player.on('ready', function(){
             var video = document.querySelector('#player');
             var client = new WebTorrent();
-            var key = atob('bWFnbmV0Oj94dD11cm46YnRpaDpkZWUzYjNlZjQwMThhYjVmMzU0NmQ4NGE5MTY1NjVjNThiY2NjNGU5JmRuPW5pZ2h0bWFyZS5tcDQmdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5idG9ycmVudC54eXomdHI9d3NzJTNBJTJGJTJGdHJhY2tlci5vcGVud2VidG9ycmVudC5jb20=');
+            var key = getCompleteKey('NzQ3ZDQzZWI5MmZhNWY2YThhOWMzOTYyZWJmZGQ5OWJhNDljNDA3NA==');
             var load = client.add(key, function(){
                 load.files.find(function(file){
                     file.renderTo(video);
