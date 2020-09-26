@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnK S3.P2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #container {
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100% !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <video id="player" playsinline controls data-plyr-config='{"speed":{"selected":1,"options":[0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]}}'></video>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js" crossorigin="anonymous"></script>
+    <script>
+        const player = new Plyr('#player');
+        player.on('ready', function(){
+            var video = document.getElementById('player');
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
+                video.setAttribute('src', 'https://cdn.doso.es/media/snks3p2-mobile.mp4');
+            } else {
+                video.setAttribute('src', 'https://cdn.doso.es/media/snks3p2.webm');
+            }
+        });
+    </script>
+</body>
+</html>
